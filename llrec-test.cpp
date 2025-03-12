@@ -66,7 +66,16 @@ void dealloc(Node* head)
 //   Add any helper functions or
 //   function object struct declarations
 // -----------------------------------------------
+struct Compare {
+    bool operator()(int value) {
+        if (value%2==1){
+            return true;
+        }
+        return false;
 
+        //example testing for odd numbers
+    }
+};
 
 
 
@@ -84,12 +93,21 @@ int main(int argc, char* argv[])
     Node* head = readList(argv[1]);
     cout << "Original list: ";
     print(head);
+    cout<<endl;
 
     // Test out your linked list code
 
+    Compare comp;
+    cout<<"filtered list:";
+    head = llfilter(head, comp);
+    cout<<endl;
+    print(head);
+
+    dealloc(head);
 
 
     
     return 0;
 
 }
+
